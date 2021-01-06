@@ -14,3 +14,6 @@ sidebar: true
 ```md
 ![An image](./image.png)
 ```
+
+## 添加新的侧边栏
+具体参考  `.vitepress/config.js` 即可
