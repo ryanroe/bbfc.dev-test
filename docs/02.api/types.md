@@ -13,6 +13,132 @@ interface Fraction {
 }
 ```
 
+## GenesisAsset
+
+用于表示创世块参数
+
+```typescript
+interface GenesisAsset {
+  // 链名
+  chainName: string;
+  // 链主权益名
+  assetType: string;
+  // 链网络标识符
+  magic: string;
+  // 链网络类型
+  bnid: "b" | "c";
+  // 链创世时间
+  beginEpochTime: number;
+  // 链创世域名
+  genesisLocationName: string;
+  // 链创世账户初始持有的主权益量
+  genesisAmount: number;
+  // 链事件每字节需要支付的最小手续费（分数）
+  minTransactionFeePerByte: Fraction;
+  // 链上事件体最大字节数
+  maxTransactionSize: number;
+  // 链上区块体最大字节数
+  maxBlockSize: number;
+  // 链上区块体最大处理的事件
+  maxTPSPerBlock: number;
+  // 删除分叉时至少需要落后的高度
+  consessusBeforeSyncBlockDiff: number;
+  // 每轮能处理的注册受托人数量
+  maxDelegateTxsPerRound: number;
+  // 权益赠送事件最大可抢次数
+  maxGrabTimesOfGiftAsset: number;
+  // 发行数组资产的账户最小持有的链资产数量
+  issueAssetMinChainAsset: number;
+  // 注册创世块的账户最小持有的链资产数量
+  registerChainMinChainAsset: number;
+  // 最大的过期区块间隔数量
+  maxApplyAndConfirmedBlockHeightDiff: number;
+  // 每轮的区块数量
+  blockPerRound: number;
+  // 创世受托人数量
+  delegates: string[];
+  // 是否允许受托人连续参与竞选
+  whetherToAllowDelegateContinusElections: boolean;
+  // 区块间隔
+  forgeInterval: number;
+  // 奖励分配比例
+  rewardPercent: {
+    // 投票占区块总奖励的百分比
+    votePercent: Fraction;
+    // 打块占区块总奖励的百分比
+    forgePercent: Fraction;
+  };
+  // 区块链端口号
+  ports: {
+    // 共识端口号
+    port: number;
+    // 节点扫描端口号
+    scan_peer_port: number;
+  };
+  // 区块奖励
+  rewardPerBlock: {
+    // 奖励变动的区块里程
+    heights: number[];
+    // 每个区块里程对应奖励的资产数量
+    rewards: string[];
+  };
+  // 账户参与度权重比
+  accountParticipationWeightRatio: {
+    // 账户上一轮末持有的主权益量的权重
+    balanceWeight: number;
+    // 账户上一轮事件量持有的
+    numberOfTransactionsWeight: number;
+  };
+  // 区块参与度权重比
+  blockParticipationWeightRatio: {
+    // 账户上一轮末持有的主权益量的权重
+    balanceWeight: number;
+    // 账户上一轮事件量持有的
+    numberOfTransactionsWeight: number;
+  };
+  // 构建 tpow 的难度系数
+  averageComputingPower: number;
+  // tpow 豁免的区块高度
+  toowOfWorkExemptionBlocks: number;
+  // tpow 配置
+  transactionPowOfWorkConfig: {
+    // 链的 pow 难度增长系数
+    growthFactor: Fraction;
+    // 链的 pow 计算参与比率
+    participationRatio: Fraction;
+  };
+  // 新注册的受托人
+  newDelegates: string[];
+  // 投票账户上轮末最大主权益量
+  maxBeginBalance: number;
+  // 上一轮投票账户中最大的事件量
+  maxTxCount: number;
+  // 下一轮的打块账户列表
+  nextRoundDelegates: NextRoundDelegate[];
+}
+```
+
+## RoundLastAsset
+
+用于表示轮末块信息
+
+```typescript
+interface RoundLastAsset {
+  // 新注册的受托人
+  newDelegates: string[];
+  // 上一轮投票账户中的最大轮末主权益量
+  maxBeginBalance: number;
+  // 上一轮投票账户中最大的事件量
+  maxTxCount: number;
+  // 下一轮的打块账户列表
+  nextRoundDelegates: NextRoundDelegate[];
+  // 链上链hash
+  hash: string;
+  // 上一轮投票账户的最大轮末主权益量和上一轮投票账户的最大事件的比
+  rate: any;
+}
+```
+
 ## NextRoundDelegate
 
 用于表示下一轮受托人
