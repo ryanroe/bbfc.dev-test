@@ -26,7 +26,7 @@ module.exports = {
       { text: '首页', link: '/' },
       { text: '博客', link: '/blog/' },
       { text: '教程', link: '/01.guide/' },
-      { text: 'API 参考', link: '/02.api/' },
+      { text: 'API 参考', link: '/02.api/1.0' },
       { text: '社区问答', link: 'https://qa.bfcc.dev/' }
     ],
 
@@ -52,6 +52,7 @@ function getAPISidebar () {
     {
       text: '接口列表',
       children: [
+        { text: '概述', link: '/02.api/1.0' },
         { text: '接口传入参数和返回参数说明', link: '/02.api/1.1' },
         { text: '基础接口使用说明', link: '/02.api/1.2' },
         { text: '发送事件接口使用说明', link: '/02.api/1.3' },
