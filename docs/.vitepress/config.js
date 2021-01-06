@@ -31,10 +31,20 @@ module.exports = {
     ],
 
     sidebar: {
-      '/01.guide/': 'auto',
+      '/01.guide/': getGuideSidebar(),
       '/02.api/': getAPISidebar()
     }
   }
+}
+
+function getGuideSidebar () {
+  return [
+    { text: '教程简介', link: '/01.guide/' },
+    { text: '安装运行', link: '/01.guide/01.install' },
+    { text: '节点部署', link: '/01.guide/02.deploy' },
+    { text: '常见问题', link: '/01.guide/03.faq' },
+    { text: '名词解释', link: '/01.guide/04.glossary' }
+  ]
 }
 
 function getAPISidebar () {
@@ -59,19 +69,3 @@ function getAPISidebar () {
     }
   ]
 }
-
-// function getGuideSidebar () {
-//   return [
-//     {
-//       text: '指南',
-//       children: [
-//         { text: '简介', link: '/01.guide/01.intro' },
-//         { text: '阅读对象', link: '/01.guide/02.user' },
-//         { text: '运行安装', link: '/guide/configuration' },
-//         { text: '节点部署', link: '/guide/assets' },
-//         { text: '常见问题', link: '/guide/markdown' },
-//         { text: '名词解释', link: '/guide/deploy' }
-//       ]
-//     }
-//   ]
-// }
