@@ -357,3 +357,106 @@ interface GetTransactionTrsDef {
   dateCreated: number;
 }
 ```
+
+## GetAccountAccountInfo
+
+调用 GetAccountInfoAndAssets 接口的时候返回的 accountInfo 字段类型描述
+
+```typescript
+interface GetAccountAccountInfo {
+  // 账户地址
+  address: string;
+  // 账户公钥
+  publicKey?: string;
+
+  username?: string;
+  // 账户状态 0 为正常；1 为冻结状态
+  accountStatus: number;
+  // 是否为受托人：false 为普通账户；true 为受托人
+  isDelegate: boolean;
+  // 是否接收投票：false 为不接收；true 为接收投票
+  isAcceptVote: boolean;
+
+  secondPublicKey?: string;
+  // 已锻造区块数
+  producedblocks: number;
+  // 掉块数量，被选为受托人并且到达锻造区块的时间却因为各种原因没有锻造出相应的区块的次数
+  missedblocks: number;
+
+  voteInfo: {
+    // 获得的权益所属轮次
+    round: number;
+    // 获得的权益数量
+    vote: bigint;
+  };
+
+  equityInfo: {
+    // 权益所属轮次
+    round: number;
+    // 权益剩余值
+    equity: bigint;
+    // 权益初始值
+    fixedEquity: bigint;
+  };
+  // 上一轮的余额信息， 倒数第一轮的轮次信息，若当前为 600 ，则当前为第 11 轮，这个值指的则是第 10 轮
+  lastRoundInfo: {
+    // 轮次
+    round: number;
+    // 轮末账户持有的主权益数量
+    assetNumber: bigint;
+    // 本轮账户的事件量
+    txCount: number;
+  };
+  // 账户变动高度
+  height: number;
+
+  productivity?: number;
+}
+```
+
+## GetAccountAccountAsset
+
+调用 GetAccountInfoAndAssets 接口的时候返回的 accountAsset 字段类型描述
+
+```typescript
+interface GetAccountAccountAsset {
+  // 地址
+  address: string;
+  publicKey?: string;
+  assets: {
+    [sourceChainMagic: string]: {
+      [assetType: string]: {
+        // 权益所属链网络标识符
+        sourceChainMagic: string;
+        // 权益名称
+        assetType: string;
+        // 权益所属主链名称
+        sourceChainName?: string;
+        // 权益数量
+        assetNumber: bigint;
+        penultimateRoundInfo?: {
+          round: number;
+          assetNumber: bigint;
+          txCount: number;
+        };
+        lastRoundInfo?: {
+          // 轮次;
+          round: number;
+          // 轮末账户持有的主权益数量
+          assetNumber: bigint;
+          // 本轮账户的事件量
+          txCount: number;
+        };
+      };
+    };
+  };
+  // 累计花费手续费
+  paidFee: bigint;
+  // 累计投票收益
+  votingRewards: bigint;
+  // 累计打块收益
+  forgingRewards: bigint;
+  // 账户变动高度
+  height: number;
+}
+```
