@@ -56,7 +56,8 @@ function getAPISidebar () {
         { text: '接口传入参数和返回参数说明', link: '/02.api/1.1' },
         { text: '基础接口使用说明', link: '/02.api/1.2' },
         { text: '发送事件接口使用说明', link: '/02.api/1.3' },
-        { text: '节点管理接口使用说明', link: '/02.api/1.4' }
+        { text: '节点管理接口使用说明', link: '/02.api/1.4' },
+        { text: '类型定义', link: '/02.api/types' },
       ]
     },
     {
