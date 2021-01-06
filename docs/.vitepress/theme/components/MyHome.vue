@@ -109,7 +109,7 @@
         <div class="description">RECOMMEND</div>
         <div class="recommend-articles">
           <a class="recommend-item" href="/blog/03">
-            <div class="img-container"><img src="/blog/image/1.png" /></div>
+            <div class="img-container"><img src="./imgs/re_03.jpg" /></div>
             <div class="recommend-item-name">
               生物链林BFChain的共识机制有什么独到之处？
             </div>
@@ -118,7 +118,7 @@
             </div>
           </a>
           <a class="recommend-item" href="/blog/04">
-            <div class="img-container"><img src="/blog/image/1.png" /></div>
+            <div class="img-container"><img src="./imgs/re_04.jpg" /></div>
             <div class="recommend-item-name">
               生物链林的技术特性和优势
             </div>
@@ -128,7 +128,7 @@
             </div>
           </a>
           <a class="recommend-item" href="/blog/05">
-            <div class="img-container"><img src="/blog/image/1.png" /></div>
+            <div class="img-container"><img src="./imgs/re_05.jpg" /></div>
             <div class="recommend-item-name">
               BFChain首创的移动端点对点通信方案，到底厉害在哪？
             </div>
@@ -138,7 +138,7 @@
             </div>
           </a>
           <a class="recommend-item" href="/blog/06">
-            <div class="img-container"><img src="/blog/image/1.png" /></div>
+            <div class="img-container"><img src="./imgs/re_06.jpg" /></div>
             <div class="recommend-item-name">
               揭秘BFChain如何破解移动端区块链三大技术难题？
             </div>
@@ -186,6 +186,13 @@ p > img {
   display: block;
   margin: 0 auto;
   width: 100%;
+}
+.content p {
+  text-indent: 2em;
+}
+.content li p {
+  text-indent: 0;
+  margin: 0;
 }
 </style>
 <style scoped>
